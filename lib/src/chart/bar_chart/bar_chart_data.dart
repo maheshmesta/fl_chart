@@ -944,5 +944,5 @@ class BarChartDataTween extends Tween<BarChartData> {
 
   /// Lerps a [BarChartData] based on [t] value, check [Tween.lerp].
   @override
-  BarChartData lerp(double t) => begin!.lerp(begin!, end!, t);
+  BarChartData lerp(double t) => begin!.lerp(begin!.copyWith(maxY: end!.maxY + ((end!.maxY - begin!.maxY) < 0 ? (begin!.maxY - end!.maxY) : (end!.maxY - begin!.maxY))), end!, t);
 }
