@@ -1315,5 +1315,7 @@ class LineChartDataTween extends Tween<LineChartData> {
 
   /// Lerps a [LineChartData] based on [t] value, check [Tween.lerp].
   @override
-  LineChartData lerp(double t) => begin!.lerp(begin!, end!, t);
+  LineChartData lerp(double t) => begin!.lerp(begin!.copyWith(
+          maxY: end!.maxY + ((end!.maxY - begin!.maxY) < 0 ? (begin!.maxY - end!.maxY) : (end!.maxY - begin!.maxY)),
+          maxX: end!.maxX + ((end!.maxX - begin!.maxX) < 0 ? (begin!.maxX - end!.maxX) : (end!.maxX - begin!.maxX))), end!, t);
 }
